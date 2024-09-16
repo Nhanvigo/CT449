@@ -39,7 +39,7 @@ class ContactService {
             }
         );
     }
-    async findBiId(id) {
+    async findById(id) {
         return await this.Contact.findOne({
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
         });
@@ -60,16 +60,16 @@ class ContactService {
         );
         return result.value;
     }
-    async delete(id){
+    async delete(id) {
         const result = await this.Contact.findOneAndDelete({
             _id: ObbjectId.isValid(id) ? new ObjectId(id) : null,
         });
         return result;
     }
-    async findFavorite(){
-        return await this.find({favorite: true})
+    async findFavorite() {
+        return await this.find({ favorite: true })
     }
-    async deleteAll(){
+    async deleteAll() {
         const result = await this.Contact.deleteMany({});
         return result.deletedCount;
     }
