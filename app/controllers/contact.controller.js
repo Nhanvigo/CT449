@@ -56,12 +56,12 @@ exports.update = async (req, res, next) => {
         const contactService = new ContactService(MongoDB.client);
         const document = await contactService.update(req.params.id, req.body);
         if (!document) {
-            return next(new ApiError(404, "Contact nott found"));
+            return next(new ApiError(404, "Contact not found"));
         }
-        res.send({ message: "Contact was update succesfully" })
+        return res.send({ message: "Contact was update successfully" })
     } catch (error) {
         return next(
-            new ApiError(500, `Error updating contact withid=${req.params.id}`)
+            new ApiError(500, `Error updating contact with id=${req.params.id}`)
         )
     }
 };
